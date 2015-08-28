@@ -1,0 +1,184 @@
+
+.hamburger {
+	display: none;
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	padding: 12px;
+	top: 0;
+	right: 0;
+	z-index: 500;
+	-webkit-tap-highlight-color: transparent;
+	-ms-touch-action: manipulation;
+	    touch-action: manipulation;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+@media (max-width: 767px) {
+	.hamburger {
+		display: block;
+	}
+}
+.icon-hamburger {
+	position: relative;
+	margin-top: 11px;
+	margin-bottom: 7px;
+}
+.icon-hamburger,
+.icon-hamburger:before,
+.icon-hamburger:after {
+	display: block;
+	width: 20px;
+	height: 2px;
+	background-color: #fff;
+	-webkit-transition: all ease .4s;
+	        transition: all ease .4s;
+}
+.icon-hamburger:before,
+.icon-hamburger:after {
+	position: absolute;
+	content: "";
+}
+.icon-hamburger:before {
+	top: -6px;
+}
+.icon-hamburger:after {
+	top: 6px;
+}
+.hamburger.active .icon-hamburger {
+	background-color: transparent;
+}
+.hamburger.active .icon-hamburger:before,
+.hamburger.active .icon-hamburger:after {
+	background-color: #fff;
+}
+.hamburger.active .icon-hamburger:before {
+	   -moz-transform: translateY(6px) rotate(45deg);
+	    -ms-transform: translateY(6px) rotate(45deg);
+	-webkit-transform: translateY(6px) rotate(45deg);
+	        transform: translateY(6px) rotate(45deg);
+}
+.hamburger.active .icon-hamburger:after {
+	   -moz-transform: translateY(-6px) rotate(-45deg);
+	    -ms-transform: translateY(-6px) rotate(-45deg);
+	-webkit-transform: translateY(-6px) rotate(-45deg);
+	        transform: translateY(-6px) rotate(-45deg);
+}
+.mobile-nav-wrapper {
+	top: 50px;
+	bottom: 0;
+	left: 0;
+	z-index: 250;
+	position: fixed;
+	display: none;
+	width: 100%;
+	background: #157fc4;
+	   -moz-transform: translateX(100%);
+	    -ms-transform: translateX(100%);
+	-webkit-transform: translateX(100%);
+	        transform: translateX(100%);
+	   -moz-transition-property:    -moz-transform;
+	     -o-transition-property:      -o-transform;
+	-webkit-transition-property: -webkit-transform;
+	        transition-property:         transform;
+	   -moz-transition-duration: .4s;
+	     -o-transition-duration: .4s;
+	-webkit-transition-duration: .4s;
+	        transition-duration: .4s;
+	overflow-y: auto;
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
+}
+.mobile-nav-wrapper.active {
+	   -moz-transform: scale(1);
+	    -ms-transform: scale(1);
+	-webkit-transform: scale(1);
+	        transform: scale(1);
+}
+.mobile-nav-inner {
+	width: 100%;
+	height: 100%;
+	display: table;
+	table-layout: fixed;
+}
+.mobile-nav .ios-fix {
+	height: 110%;
+	   -moz-transform: translateY(-5%);
+	    -ms-transform: translateY(-5%);
+	-webkit-transform: translateY(-5%);
+	        transform: translateY(-5%);
+	padding-top: 10%;
+	padding-bottom: 10%;
+}
+.mobile-nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.mobile-nav ul a {
+	color: #fff;
+	font-size: 16px;
+	line-height: 20px;
+	display: block;
+	padding: 15px 20px;
+}
+.mobile-nav ul a:active,
+.mobile-nav ul a:hover {
+	text-decoration: none;
+}
+.mobile-nav ul .col {
+	padding: 0;
+}
+.mobile-nav ul li a {
+	text-transform: uppercase;
+}
+.mobile-nav ul li.parent a:after {
+	position: absolute;
+	content: "";
+	content: " ";
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background: url("../images/all-icons.png") no-repeat -80px -60px;
+}
+@media screen and (min-resolution: 192dpi) {
+	.mobile-nav ul li.parent a:after {
+		background-image: url(../images/all-icons@2x.png);
+		background-size: 200px 300px;
+	}
+}
+.mobile-nav ul li.parent li a:after {
+	content: none;
+}
+.mobile-nav ul li li a {
+	text-transform: none;
+	background: transparent;
+}
+.mobile-nav ul li.active > a {
+	background: rgba(24, 24, 24, .3);
+}
+.mobile-nav ul li.active > a + .second-level {
+	display: block;
+}
+.mobile-nav ul li.active > a:after {
+	background-position: -80px -80px;
+}
+.mobile-nav ul .second-level {
+	position: static;
+	background: rgba(24, 24, 24, .1);
+}
+.mobile-nav ul .second-level li {
+	width: 100%;
+}
+.mobile-nav > ul {
+	background: rgba(24, 24, 24, .3);
+	margin: 10px 20px 20px;
+	border-radius: 3px;
+}
+.mobile-nav > ul > li:first-child a {
+	border-radius: 3px 3px 0 0;
+}
+.mobile-nav > ul > li:last-child a {
+	border-radius: 0 0 3px 3px;
+}
