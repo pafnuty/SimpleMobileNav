@@ -1,8 +1,8 @@
 /**!
  * Плагин для реализации полноэкранного меню из существующего на старнице кода
  * @link https://github.com/pafnuty/SimpleMobileNav
- * @date 08.10.2015
- * @version 1.0.0
+ * @date 09.10.2015
+ * @version 1.0.1
  * 
  */
 (function ($, window, document) {
@@ -10,6 +10,7 @@
 	var pluginName = 'simpleMobileNav',
 		previousResizeWidth = 0,
 		$body = $('body'),
+		$window = $(window),
 		defaults = {
 			// Селектор, указывающий на блок, из которого будут взяты пункты меню
 			navBlock: '.nav',
@@ -84,33 +85,30 @@
 			$body
 				.css({
 					'overflow': isNavOpen ? 'hidden' : self._bodyOverflow,
-					'width': isNavOpen ? $body.width() : ''
+					'width': isNavOpen ? $window.width() : ''
 				});
-
-			this.$nav.css('width', $body.width());
 
 			if (isNavOpen) {
 				this.settings.beforeNavOpen.call(this.$menuButon, this.$nav);
 
-				$(window).on('resize.'+ pluginName +' orientationchange.'+ pluginName, function (event) {
+				$(window).on('resize.' + pluginName + ' orientationchange.' + pluginName, function (event) {
 					self.navResize(event);
 				});
-
-			} else {
+			}
+			else {
 				this.settings.beforeNavClose.call(this.$menuButon, this.$nav);
 
-				$(window).off('resize.'+ pluginName +' orientationchange.'+ pluginName);
+				$(window).off('resize.' + pluginName + ' orientationchange.' + pluginName);
 			}
 
 		},
 		navResize: function (event) {
 			if (event && (event.type === 'resize' || event.type === 'orientationchange')) {
-				var windowWidth = $(window).width();
+				var windowWidth = $window.width();
 				if (windowWidth === previousResizeWidth) {
 					return;
 				}
 				$body.css('width', windowWidth);
-				this.$nav.css('width', windowWidth);
 				previousResizeWidth = windowWidth;
 			}
 		}
