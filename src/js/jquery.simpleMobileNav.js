@@ -1,15 +1,15 @@
 /**!
  * Плагин для реализации полноэкранного меню из существующего на старнице кода
  * @link https://github.com/pafnuty/SimpleMobileNav
- * @date 09.10.2015
- * @version 1.0.1
+ * @date 05.02.2015
+ * @version 1.0.2
  * 
  */
 (function ($, window, document) {
 	'use strict';
 	var pluginName = 'simpleMobileNav',
 		previousResizeWidth = 0,
-		$body = $('body'),
+		$body,
 		$window = $(window),
 		defaults = {
 			// Селектор, указывающий на блок, из которого будут взяты пункты меню
@@ -30,6 +30,7 @@
 
 		};
 
+
 	function Plugin(obj, options) {
 		this.settings = $.extend({}, defaults, options);
 		this._defaults = defaults;
@@ -43,9 +44,10 @@
 			$(this.settings.navContainer).append($(this.settings.navBlock).clone());
 			var self = this,
 				$nav = this.$nav = $(this.settings.navWrapper),
-				$menuButon = this.$menuButon = $('<span class="hamburger"><span class="icon-hamburger"></span></span>');
+				$menuButon = this.$menuButon = $('<span class="hamburger"><span class="icon-hamburger"></span></span>'),
+				$body = $('body');
 
-			this._bodyOverflow = $('body').css('overflow');
+			this._bodyOverflow = $body.css('overflow');
 
 			// Hack to prevent mobile safari scrolling the whole body when nav is open
 			// @todo: проверить на различных устройствах
@@ -53,7 +55,7 @@
 				$nav.children().addClass('ios-fix');
 			}
 
-			$('body').append($menuButon);
+			$body.append($menuButon);
 
 			$().add($menuButon).add($nav.find('.hamburger')).on('click', function () {
 				self.toggleNav();
