@@ -1,8 +1,8 @@
 /**!
  * Плагин для реализации полноэкранного меню из существующего на старнице кода
  * @link https://github.com/pafnuty/SimpleMobileNav
- * @date 05.02.2015
- * @version 1.0.2
+ * @date 10.02.2015
+ * @version 1.0.3
  * 
  */
 (function ($, window, document) {
@@ -44,8 +44,9 @@
 			$(this.settings.navContainer).append($(this.settings.navBlock).clone());
 			var self = this,
 				$nav = this.$nav = $(this.settings.navWrapper),
-				$menuButon = this.$menuButon = $('<span class="hamburger"><span class="icon-hamburger"></span></span>'),
-				$body = $('body');
+				$menuButon = this.$menuButon = $('<span class="hamburger"><span class="icon-hamburger"></span></span>');
+
+			$body = $('body');
 
 			this._bodyOverflow = $body.css('overflow');
 
